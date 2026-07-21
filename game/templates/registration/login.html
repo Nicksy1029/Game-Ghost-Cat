@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+
+<body>
+<h2 class="registration-title">Войти</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Войти</button>
+</form>
+
+<a href="{% url 'logout' %}">Выйти</a>
+<script>
+    const score = localStorage.getItem("score");
+    if (score) {
+        // Найдём input, созданный формой Django:
+        const input = document.querySelector('input[name="score"]');
+        if (input) {
+            input.value = score;
+        }
+    }
+</script>
+</body>
+</html>

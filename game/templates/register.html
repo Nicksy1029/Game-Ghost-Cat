@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+
+<body>
+<h2 class="registration-title">Регистрация</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Зарегистрироваться</button>
+</form>
+<script>
+    const score = localStorage.getItem("score");
+    if (score) {
+        const input = document.querySelector('input[name="score"]');
+        if (input) {
+            input.value = score;
+        }
+    }
+</script>
+</body>
+</html>
